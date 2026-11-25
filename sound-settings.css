@@ -1,0 +1,29 @@
+.sound-button,.sound-done{
+  font:700 17px/1.24 var(--book-font);padding:8px 13px;border:2px solid #d3bc95;border-radius:15px;min-height:46px;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;color:#355a53;background:#fff6df;
+  box-shadow:inset 0 2px 0 #fffdf3,0 3px 0 #ac9574;cursor:pointer;touch-action:manipulation;
+}
+.sound-button{flex:none}
+.sound-note{position:relative;font:700 23px/1 Georgia,serif}
+.sound-button[data-muted="true"] .sound-note::after{content:"";position:absolute;left:-1px;right:-1px;top:48%;height:2px;transform:rotate(-48deg);background:currentColor;outline:1px solid #fff5df}
+.sound-button:active,.sound-done:active{transform:translateY(2px);box-shadow:0 1px 0 #ac9574}
+.sound-corner{position:absolute;top:max(18px,env(safe-area-inset-top));right:max(18px,env(safe-area-inset-right))}
+#story .sound-corner{color:#f5e7c7;background:#161818;border:1px solid #97886b;box-shadow:none}
+#hud .sound-button{pointer-events:auto;align-self:flex-end}
+#sound-panel{width:min(345px,calc(100vw - 30px));max-height:calc(100dvh - 28px);overflow:auto;
+  box-sizing:border-box;padding:22px 24px 24px;border:2px solid #d5bd96;border-radius:21px;
+  background:#fff8e9;color:#31473f;font:400 19px/1.45 var(--book-font);box-shadow:0 5px 0 #ba9c75,0 14px 40px #1c211e70}
+#sound-panel::backdrop{background:#192a2b80}
+#sound-panel h2{margin:0 0 17px;font:700 27px/1.3 var(--book-font);color:#365a4d}
+#sound-panel label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:700}
+#sound-panel output{font-variant-numeric:tabular-nums;color:#565f4e;font-size:17px}
+#sound-panel input[type="range"]{display:block;width:100%;height:44px;margin:0 0 8px;accent-color:#397d6b}
+#sound-panel .mute-row{justify-content:flex-start;min-height:44px;border-top:1px solid #dbc9a4;padding-top:8px}
+#sound-panel input[type="checkbox"]{width:23px;height:23px;margin:0;accent-color:#397d6b}
+.sound-done{margin-top:16px;width:100%;background:#397d6b;border-color:#39715e;color:#fff;box-shadow:0 3px 0 #245849}
+#sound-panel :focus-visible,.sound-button:focus-visible{outline:3px solid #756396;outline-offset:3px}
+@media(max-width:720px){
+  .paper-head .sound-word,.final-actions .sound-word{display:none}
+  .paper-head .sound-button,.final-actions .sound-button{min-width:44px;padding:7px}
+  .sound-corner{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right))}
+}

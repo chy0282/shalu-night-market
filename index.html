@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#273f3c">
+  <meta name="description" content="走進紙藝沙呂城，重溫四個中文課題，收集花燈點亮夜市。">
+  <title>沙呂城的夜市｜古城探索溫習遊戲</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./scene.css"><link rel="stylesheet" href="./academy.css"><link rel="stylesheet" href="./lesson-page.css"><link rel="stylesheet" href="./storybook.css"><link rel="stylesheet" href="./atlas-book.css"><link rel="stylesheet" href="./sound-settings.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","./vendor/three/three.core.js":"./vendor/three/three.core.min.js","papercraft/":"./vendor/papercraft/"}}</script>
+</head>
+<body data-mode="loading">
+  <main>
+    <section id="welcome" hidden aria-labelledby="welcome-title">
+      <div class="welcome-frame"></div>
+      <div class="welcome-copy">
+        <p class="school">浸信會沙田圍呂明才小學</p>
+        <h1 id="welcome-title">沙呂城<span>的夜市</span></h1>
+        <p class="subtitle">古城探索溫習遊戲</p>
+        <button id="start" class="start-btn" type="button">開始探索</button>
+        <div id="saved-visit" hidden><span></span><button type="button" id="fresh-start">重新集燈</button></div>
+      </div>
+      <small class="credit">製作者：張老師</small>
+    </section>
+    <section id="story" hidden aria-label="沙呂城的故事">
+      <div class="story-block">
+        <p id="story-count" aria-label="故事進度"></p>
+        <p id="story-line" aria-hidden="true"></p>
+        <p id="story-transcript" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+        <nav class="story-controls" aria-label="故事翻頁">
+          <button type="button" id="story-prev" class="ghost-btn" hidden>上一頁</button>
+          <button type="button" id="story-next" class="ghost-btn">顯示整段</button>
+        </nav>
+      </div>
+    </section>
+    <section id="hud" hidden aria-label="古城探索">
+      <header><span class="seal" aria-hidden="true">沙<br>呂</span><div><b>沙呂城的夜市</b><p id="location">城門</p></div></header>
+      <div id="bag" aria-live="polite"></div>
+      <div id="world-signs" aria-hidden="true"></div>
+      <div id="guide"><span id="walk-reader" aria-hidden="true"></span><i class="guide-compass" aria-hidden="true"><i id="guide-arrow">↑</i></i><div role="status"><b id="guide-name"></b><small id="guide-help"></small></div></div>
+      <div id="stick" role="group" aria-label="移動搖桿，電腦可用方向鍵代替"><i class="north"></i><i class="east"></i><i class="south"></i><i class="west"></i><span id="thumb"></span></div>
+      <div class="world-actions"><button type="button" id="reenter" class="world-btn" hidden></button><button type="button" id="map-open" class="world-btn"><span class="map-icon" aria-hidden="true"></span>古城地圖</button></div>
+    </section>
+    <section id="overlay" hidden></section>
+    <section id="lesson-page" aria-label="語文遊戲" hidden></section>
+    <section id="ending" hidden aria-label="沙呂城的夜市開張了"><div class="final-card" hidden></div></section>
+  </main>
+  <dialog id="sound-panel" aria-labelledby="sound-title">
+    <form method="dialog">
+      <h2 id="sound-title">聲音設定</h2>
+      <label for="music-volume">背景音樂 <output id="music-level" for="music-volume"></output></label>
+      <input id="music-volume" type="range" min="0" max="100" step="1">
+      <label for="effects-volume">遊戲音效 <output id="effects-level" for="effects-volume"></output></label>
+      <input id="effects-volume" type="range" min="0" max="100" step="1">
+      <label class="mute-row"><input id="sound-muted" type="checkbox">全部靜音</label>
+      <button class="sound-done" autofocus>完成</button>
+    </form>
+  </dialog>
+  <div id="loading" role="status"><div class="loading-lantern" aria-hidden="true"></div><strong>沙呂城的夜市</strong><small>正在展開紙城…</small></div>
+  <script type="module">
+    import('./game.js').catch(error=>{
+      console.error(error);const box=document.getElementById('loading');box.hidden=false;
+      box.querySelector('small').textContent='未能展開紙城，請用支援 WebGL 2 的瀏覽器重新開啟遊戲網址。';
+    });
+  </script>
+</body>
+</html>
